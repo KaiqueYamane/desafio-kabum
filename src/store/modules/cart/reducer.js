@@ -5,13 +5,19 @@ const initialState = {
 }
 
 export default function cartReducer(state = initialState, action) {
-  console.log(action);
-
   const { type } = action;
 
   switch (type) {
-    case types.ADD_PRODUCT_CART:
-      return state;
+    case types.ADD_PRODUCT_CART: {
+      const newState = { ...state };
+
+      newState['cart'].push({
+        product: action.product,
+        quantity: 1
+      });
+
+      return newState;
+    }
 
     case types.REMOVE_PRODUCT_CART:
       return state;

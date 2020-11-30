@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Nav, NavActions, HomeIcon, UserIcon, CartIcon } from './styled';
-import logo from '../../assets/imgs/logo.png';
+import { LogoImg, Nav, NavActions, HomeIcon, UserIcon, CartIcon } from './styled';
 
 export default function Header() {
   return (
     <Nav>
-      <h1>LOGO VEM AQUI</h1>
+      <Link to='/'>
+        <LogoImg />
+      </Link>
       <NavActions>
         <Link to='/'>
           <HomeIcon size={24} />

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const Title = styled.h1`
-  background-color: red;
+export const Container = styled.section`
+  /* background-color: red; */
 `;
+
