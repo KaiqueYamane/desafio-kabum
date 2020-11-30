@@ -1,33 +1,10 @@
 import { createStore } from 'redux';
+import { persistStore } from 'redux-persist';
 
-const initialState = {
-  cart: []
-}
+import rootReducer from './modules/rootReducer';
+import persistedReducers from './modules/reduxPersist';
 
-const reducer = (state = initialState, action) => {
-  const { type } = action;
+const store = createStore(persistedReducers(rootReducer));
 
-  switch (type) {
-    case 'ADD_PRODUCT_CART':
-      return state;
-
-    case 'REMOVE_PRODUCT_CART':
-      return state;
-
-    case 'INCREASE_PRODUCT_AMOUNT':
-      return state;
-
-    case 'DECREASE_PRODUCT_AMOUNT':
-      return state;
-
-    case 'CLEAN_CART':
-      return state;
-
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducer);
-
+export const persistor = persistStore(store);
 export default store;
