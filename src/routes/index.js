@@ -8,10 +8,10 @@ import ProductDescription from '../pages/ProductDescription';
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path='/' component={Home} />
+      <Route exact path='/home' component={Home} />
       <Route exact path='/cart' component={Cart} />
       <Route exact path='/product/:id' component={ProductDescription} />
-      <Route path='*'><Redirect to='/' /></Route>
+      <Route path='*'><Redirect to='/home' /></Route>
     </Switch>
   );
 }

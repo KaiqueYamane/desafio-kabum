@@ -11,7 +11,8 @@ export default function Product({ product }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  function handleClick() {
+  function handleClick(e) {
+    e.preventDefault();
     history.push(`product/${product.id}`);
   }
 
