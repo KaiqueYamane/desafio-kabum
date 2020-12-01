@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 
 import { primaryColor } from '../../../config/colors';
 
-export const CartCard = styled(Card)`
+export const ProductCard = styled(Card)`
   margin-bottom: 2rem;
 `;
 
@@ -15,10 +15,6 @@ export const Title = styled(Card.Header)`
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  
-  button svg {
-    color: black;
-  }
 `;
 
 export const Body = styled(Card.Body)`

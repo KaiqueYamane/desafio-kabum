@@ -13,14 +13,17 @@ export default function Product({ product }) {
 
   function handleClick(e) {
     e.preventDefault();
-    history.push(`product/${product.id}`);
+    history.push({
+      pathname: `product/${product.id}`,
+      state: { product }
+    });
   }
 
   function handleBuyProduct(e) {
     e.preventDefault();
 
     dispatch(addProductToCart(product));
-    history.push(`cart`);
+    history.push(`/cart`);
   }
 
   function handlePrice(price) {

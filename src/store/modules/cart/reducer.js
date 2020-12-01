@@ -48,7 +48,6 @@ export default function cartReducer(state = initialState, action) {
     case types.REMOVE_PRODUCT_CART: {
       let newState = { ...state };
 
-      debugger;
       const _product = newState.cart.products.find(item => item.product.id === action.product.id);
       const _productIndex = newState.cart.products.findIndex(item => item.product.id === action.product.id);
       if (_product) {

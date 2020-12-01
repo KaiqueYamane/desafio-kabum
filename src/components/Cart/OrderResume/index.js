@@ -11,8 +11,6 @@ export default function OrderResume({ cart, goToCheckout }) {
     return formatMoney(price, ".", ",");
   }
 
-  console.log('cart => ', cart);
-
   return (
     <OrderResumeCard>
       <Title as='h4'>Resumo do Pedido</Title>
@@ -34,7 +32,6 @@ export default function OrderResume({ cart, goToCheckout }) {
           <PriceText>R$ {handlePrice(cart.orderAmount)}</PriceText>
         </Row>
         <small> à vista no boleto</small>
-
         <Button className="ml-1" variant="primary" size="lg" block onClick={goToCheckout}><FaShoppingCart />&nbsp;Finalizar Compra</Button>
       </Body >
     </OrderResumeCard >

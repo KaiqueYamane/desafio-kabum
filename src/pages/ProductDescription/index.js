@@ -1,26 +1,44 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Title } from './styled';
-import { addProductToCart } from '../../store/modules/cart/actions';
+import { Container } from './styled';
+import ProductNotFound from '../../components/ProductDescription/ProductNotFound';
+import ProductInfo from '../../components/ProductDescription/ProductInfo';
+import axios from '../../services/axios';
 
-export default function ProductDescription() {
-  const dispatch = useDispatch();
+export default function ProductDescription(props) {
+  const history = useHistory();
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    console.log('ProductDescription');
+    const { id } = props?.match?.params;
+    const _product = props?.location?.state?.product;
+
+    if (_product) {
+      setProduct(_product);
+    } else {
+      if (id)
+        fetchData(id);
+      else
+        history.push('/');
+    }
   }, []);
 
-  function addProduct(e) {
-    e.preventDefault();
-
-    dispatch(addProductToCart());
+  async function fetchData(id) {
+    const { data, status } = await axios.get(`/products/${id}`);
+    if (status === 200) {
+      setProduct(data);
+    } else
+      setProduct(null);
   }
 
   return (
-    <>
-      <Title>PRODUCT-DESCRIPTION</Title>
-      <button type='button' onClick={addProduct}>ADD PRODUTO</button>
-    </>
+    <Container>
+      {
+        product
+          ? <ProductInfo product={product} />
+          : <ProductNotFound />
+      }
+    </Container >
   );
 }
