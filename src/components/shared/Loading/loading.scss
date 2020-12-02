@@ -1,0 +1,70 @@
+@keyframes animationLoading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.loading {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+
+  &__box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+  }
+
+  &__animate {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 70px;
+    height: 70px;
+    border: 5px solid #c3073f;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: animationLoading 1s linear infinite;
+    box-sizing: content-box;
+  }
+}
+
+.modal-wrapper {
+  > .modal {
+    &.modal-loading {
+      background: transparent;
+    }
+  }
+}
+
+.custom-map-modal {
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .modal-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+  }
+}
+
+.modal-dialog {
+  max-width: none !important;
+}

@@ -17,6 +17,11 @@ export default function Cart() {
   const { cartReducer: cart } = useSelector(state => state);
   const [show, setShow] = useState(false);
 
+  function goToHomePage(e) {
+    e.preventDefault();
+
+    history.push('/home');
+  }
 
   function goToCheckout(e) {
     e.preventDefault();
@@ -47,7 +52,7 @@ export default function Cart() {
                 </Col>
               </Row>
               <OrderPlacedModal show={show} onHide={() => handleModalClose()} />
-              <Button variant='link'>Continuar comprando</Button>
+              <Button variant='link' onClick={goToHomePage}>Continuar comprando</Button>
             </Body>
           </CartCard>
           :

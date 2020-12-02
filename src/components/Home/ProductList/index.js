@@ -2,24 +2,30 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Row } from 'react-bootstrap';
 
-import axios from '../../../services/axios';
-import Product from '../Product';
 import { Title, ProductRow, ProductItem } from './styled';
+import axios from '../../../services/axios';
+import Loading from '../../../components/shared/Loading';
+import Product from '../Product';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
   }, []);
 
   async function fetchData() {
+    setProducts([]);
+    setLoading(true);
     const { data, status } = await axios.get('/products');
     if (status === 200) {
       const _arraySliced = arraySliced(data, 4);
       setProducts([..._arraySliced]);
     } else
       setProducts([]);
+
+    setLoading(false);
   }
 
   function arraySliced(base, maximo) {
@@ -58,7 +64,7 @@ export default function ProductList() {
           </ProductRow>
         )
       }
-
+      { loading && <Loading />}
     </Container>
   );
 }
