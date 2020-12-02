@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { LogoImg, Nav, NavActions, HomeIcon, UserIcon, CartIcon } from './styled';
+import { LogoImg, Nav, NavActions, HomeIcon, UserIcon } from './styled';
+import CartResume from '../CartResume';
 
 export default function Header() {
   return (
@@ -14,9 +15,7 @@ export default function Header() {
           <HomeIcon size={24} />
         </Link>
         <UserIcon size={24} />
-        <Link to='/cart'>
-          <CartIcon size={24} />
-        </Link>
+        <CartResume />
       </NavActions>
     </Nav>
   );
