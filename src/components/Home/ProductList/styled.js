@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { Row, Col } from 'react-bootstrap';
+import { InputGroup, Row, Col } from 'react-bootstrap';
 
 export const Title = styled.h1`
   color: white;
@@ -14,4 +13,8 @@ export const ProductItem = styled(Col)`
   .card {
     height: 30rem;
   }
+`;
+
+export const Form = styled(InputGroup)`
+  padding: 16px;
 `;
