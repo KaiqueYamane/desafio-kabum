@@ -6,17 +6,15 @@ import { ToastContainer } from 'react-toastify';
 
 import GlobalStyles from './styles/GlobalStyles';
 import Header from './components/shared/Header';
-import Loading from './components/shared/Loading';
-import history from './services/history';
-import Routes from './routes';
 import store, { persistor } from './store';
+import Routes from './routes';
 
 function App() {
 
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <BrowserRouter history={history}>
+        <BrowserRouter>
           <Header />
           <Routes />
           <GlobalStyles />

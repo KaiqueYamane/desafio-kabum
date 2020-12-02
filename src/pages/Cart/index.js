@@ -45,7 +45,7 @@ export default function Cart() {
             <Body>
               <Row>
                 <Col sm={9}>
-                  {cart.cart.products.map((item, index) => <ProductCart item={item} index={index} />)}
+                  {cart.cart.products.map((item, index) => <ProductCart key={`product-${index}`} item={item} index={index} />)}
                 </Col>
                 <Col sm={3}>
                   <OrderResume cart={cart.cart} goToCheckout={goToCheckout} />
